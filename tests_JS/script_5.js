@@ -10,54 +10,96 @@ const books = [
     { title: 'La disparition', id: 364445, rented: 33 },
     { title: 'La lune seule le sait', id: 63541, rented: 43 },
     { title: 'Voyage au centre de la Terre', id: 4656388, rented: 38 },
-    { title: 'Guerre et Paix', id: 748147, rented: 19 }
+    { title: 'Guerre et Paix', id: 748147, rented: 19 },
+    // { title: 'Tony Chu', id: 123456, rented: 0 }
 ];
 
-var res0 = "Yes all rented";
-var res1 = [];
-var res2 = [];
-var res4 = [];
-var res5 = [];
+/* **** Question 1 **** */
 
-for (var i = 0; i < books.length; i++) {
+console.log("Est-ce que tous les livres ont été au moins empruntés une fois ?");
 
-    if (books[i].rented === 0) {
-        res0 = "Not all rented";
-    }
-    res1.push(books[i].rented);
-    if (books[i].id === 873495) {
-        res2 = books[i].title;
-    }
-    if (books[i].id === 133712) {
-        delete books[i];
-        i++;
-    }
-    res4.push(books[i]);
-    res5.push(books[i].title);
+function rent() {
+    for (let index in books) {
+        if (books[index].rented == 0) {
+            return false;
+        }
+    };
+    return true;
 }
-var max = Math.max(...res1);
-var min = Math.min(...res1);
 
+console.log(rent());
 
-for (var i = 0; i < books.length; i++) {
-    if (books[i].rented === max) {
-        console.log("bite");
+/* **** Question 2 **** */
+
+console.log("Quel est livre le plus emprunté ?");
+
+function compare_rent(a, b) {
+    const rentedA = a.rented;
+    const rentedB = b.rented;
+
+    let comparison = 0;
+    if (rentedA > rentedB) {
+        comparison = 1;
+    } else if (rentedA < rentedB) {
+        comparison = -1;
     }
+    return comparison;
 }
-console.log(res1);
 
+console.log(books.sort(compare_rent)[books.length - 1])
 
+/* **** Question 3 **** */
 
+console.log("Quel est le livre le moins emprunté ?");
 
-console.log("######## rented? ########");
-console.log(res0);
-console.log("######## More rented ########");
-console.log(max);
-console.log("######## Less rented ########");
-console.log(min);
-console.log("######## ID book ########");
-console.log(res2);
-console.log("######## Delete ########");
-console.log(res4);
-console.log("######## Tri Alpha ########");
-console.log(res5.sort());
+console.log(books.sort(compare_rent)[0])
+
+/* **** Question 4 **** */
+
+console.log("Trouve le livre avec l'ID: 873495");
+
+function find_book(id) {
+    for (let index in books) {
+        if (books[index].id == id) {
+            return books[index];
+        }
+    };
+    return "Book not found";
+}
+
+console.log(find_book(873495));
+
+/* **** Question 5 **** */
+
+console.log("Supprime le livre avec l'ID: 133712");
+
+function rm_book(id) {
+    for (let index in books)
+        if (books[index].id == id) {
+            console.log(`${books[index].title} deleted`);
+            delete books[index]
+        };
+}
+
+rm_book(133712);
+
+/* **** Question 6 **** */
+
+console.log("Trie les livres par ordre alphabétique");
+
+function compare_title(a, b) {
+    const titleA = a.title;
+    const titleB = b.title;
+
+    let comparison = 0;
+    if (titleA > titleB) {
+        comparison = 1;
+    } else if (titleA < titleB) {
+        comparison = -1;
+    }
+    return comparison;
+}
+
+let new_books = books.sort(compare_title);
+new_books.pop();
+console.log(new_books);

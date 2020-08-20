@@ -1,4 +1,3 @@
-/*https://medium.com/@endubueze00/staircase-javascript-algorithm-ec6ae8c00ec2*/
 function staircase(n) {
     let filledArray = new Array(n).fill(' ');
     while (filledArray.indexOf(' ') !== -1) {
@@ -8,6 +7,6 @@ function staircase(n) {
         n--;
     }
 }
-let a = prompt ('Number?');
+let a = prompt('Number?');
 let res = Number(a);
 staircase(res);

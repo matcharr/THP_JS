@@ -3,7 +3,7 @@ console.log("Bonjour monde");
 
 console.log("#####################");
 
-let name= "";
+let name = "";
 let letter;
 
 while (!name) {

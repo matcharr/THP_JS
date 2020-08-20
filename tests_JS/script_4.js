@@ -17,13 +17,13 @@ const a = [
     { first: 'Travis', last: 'Kalanick', year: 1976 },
     { first: 'Marc', last: 'Andreessen', year: 1971 },
     { first: 'Peter', last: 'Thiel', year: 1967 }
-  ];
+];
 
 
-var res1 = [];
-var res2 = [];
-var res3 = [];
-var res4 = [];
+let res1 = [];
+let res2 = [];
+let res3 = [];
+let res4 = [];
 
 for (var i = 0; i < a.length; i++) {
     if ((a[i].year > 1969) && (a[i].year < 1980)) {
@@ -33,8 +33,8 @@ for (var i = 0; i < a.length; i++) {
     res2.push(a[i].last);
     res3.push(2020 - a[i].year);
     res4.push(a[i].last);
-    
-    
+
+
 }
 console.log("######## ANNEE 70 ########");
 console.log(res1);
